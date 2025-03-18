@@ -1,0 +1,3 @@
+#base=js
+multifield-path-validator.js
+in-page-search-2-authoring.js

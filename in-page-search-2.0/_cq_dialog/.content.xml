@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="In Page Search 2.0"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          extraClientlibs="[cq.authoring.dialog.search]">
+    <content
+            jcr:primaryType="nt:unstructured"
+            id="in-page-search-2.0-dialog"
+            sling:resourceType="granite/ui/components/foundation/container">
+        <layout
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"/>
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <tabs
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/container">
+                        <layout
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/layouts/tabs"
+                                type="nav"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <configs
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Configuration"
+                                    sling:resourceType="granite/ui/components/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <inpageconfigs
+                                            jcr:primaryType="nt:unstructured"
+                                            jcr:title=""
+                                            sling:resourceType="granite/ui/components/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <links
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    eaem-nested=""
+                                                    fieldDescription="Configure which page paths in-page search will pull results from. Click ‘Add’ to add a new Page Path."
+                                                    fieldLabel="Add Page Path"
+                                                    id="custom-wide-multifield">
+                                                <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/fieldset"
+                                                        name="./inpagenewslists">
+                                                    <layout
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"/>
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <path
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                                        fieldLabel="Page Path"
+                                                                        name="./pagePath"
+                                                                        rootPath="/content"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </links>
+                                            <disableSearch
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                    fieldDescription="When checked, the search bar for in-page search will be hidden."
+                                                    uncheckedValue=""
+                                                    value="true"
+                                                    text="Disable Search"
+                                                    name="./disableSearch"/>
+                                            <newsText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                    fieldDescription="Placeholder text in searchbar. Default text is 'Search'."
+                                                    fieldLabel="Search Text"
+                                                    name="./newsText"
+
+                                            />
+                                            <showInternationalDate
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                    fieldDescription="This will show the date next to each news result as YYYY-MM-DD instead of MM DD, YYYY."
+                                                    name="./showInternationalDate"
+                                                    text="Show International Date"
+                                                    uncheckedValue=""
+                                                    value="true"/>
+                                            <showResultCount
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                    fieldDescription="If not checked, the total number of results returned will not be displayed."
+                                                    uncheckedValue=""
+                                                    value="true"
+                                                    text="Show Result Count"
+                                                    name="./showResultCount"/>
+                                            <newWindow
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                    fieldDescription="When enabled, results will open in a new tab when clicked by the end user."
+                                                    text="Open in New Tab"
+                                                    name="./openInNewTab"
+                                                    uncheckedValue=""
+                                                    value="true"/>
+                                            <defaultImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget image-authoring-cls"
+                                                    fieldDescription="If the thumbnail field has not been filled out for a page being brought in for in-page search-2.0, this default image is used instead."
+                                                    fieldLabel="Default Image"
+                                                    fileNameParameter="./imageName"
+                                                    fileReferenceParameter="./imageRef"
+                                                    mimeTypes="[image]"
+                                                    multiple="{Boolean}false"
+                                                    name="./image"
+                                                    rootPath="/content/dam"
+                                                    title="Upload Image"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"/>
+                                            <imgPath
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                    class="image-path-cls image-path-disb"
+                                                    fieldLabel="Image Path"
+                                                    source-input="image"
+                                                    rootPath="/content/dam"
+                                                    name="./imgPath"/>
+
+                                            <tagsAlpha
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                    fieldDescription="When checked, the Tags configured for filtering results will display in alphabetical order."
+                                                    uncheckedValue=""
+                                                    value="true"
+                                                    text="Show Filter Tags Alphabetically"
+                                                    name="./tagsAlpha"/>
+
+                                            <filteringConfigurations
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Filtering Configurations"
+                                                    id="custom-wide-multifield"
+
+                                            >
+                                                <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/fieldset"
+                                                        name="./filteringConfigurations"
+                                                >
+                                                    <layout
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"/>
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <tagsGroupLabel
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                                        fieldDescription="Use the Tags Group Label field to provide a category title for the tags that will be listed below it in the filtering options."
+                                                                        fieldLabel="Tags Group Label"
+                                                                        maxlength="50"
+                                                                        required="{Boolean}true"
+                                                                        name="./tagsGroupLabel"/>
+
+                                                                <tags
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                                        fieldLabel="Tags"
+                                                                        fieldDescription="Choose the tags end users will be able to filter results with. These tags will appear in a list under the corresponding Tags Group Label configured above."
+                                                                        multiple="{Boolean}true"
+                                                                        required="{Boolean}true"
+                                                                        name="./filterTags"/>
+                                                                <tag-type
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/foundation/form/hidden"
+                                                                        name="./filterTags@TypeHint"
+                                                                        value="String[]"/>
+
+
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </filteringConfigurations>
+                                            <enableFeaturedArticles
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                    fieldDescription="When enabled, one or three articles can be configured to always appear at the top of the in-page search component."
+                                                    uncheckedValue=""
+                                                    value="true"
+                                                    text="Enable Featured Articles"
+                                                    name="./enableFeaturedArticles"
+                                           />
+                                            <featuredArticlesSectionTitle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                    fieldLabel="Featured Articles Section Title"
+                                                    maxlength="100"
+                                                    name="./featuredArticlesSectionTitle"
+
+                                            />
+                                            <featuredArticlesFeedType jcr:primaryType="nt:unstructured"
+                                                                      sling:resourceType="granite/ui/components/foundation/form/select"
+                                                                      fieldLabel="Featured Articles Feed Type"
+                                                                      name="./featuredArticlesFeedType"
+                                                                      class="cq-dialog-dropdown-showhide"
+                                                                      cq-dialog-dropdown-showhide-target=".article-type-showhide-target"
+                                            >
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <oneArticle
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="1 Featured Article - Top Result from Search"
+                                                            value="oneSearch"/>
+                                                    <threeArticles
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="3 Featured Articles - Top 3 Results from Search"
+                                                            value="threeSearch"/>
+                                                    <oneArticleManual
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="1 Featured Article - Manually Configured"
+                                                            value="oneManualArticle"/>
+                                                    <threeArticlesManual
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="3 Featured Articles - Manually Configured"
+                                                            value="threeManualArticles"/>
+
+                                                </items>
+                                            </featuredArticlesFeedType>
+                                            <pathOneArticle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                    fieldLabel="Featured Article Page Path"
+                                                    name="./pathOneArticle"
+                                                    rootPath="/content"
+                                                    required="{Boolean}true"
+                                                    class="hide article-type-showhide-target"
+                                                    showhidetargetvalue="oneManualArticle"
+                                            />
+                                            <pathTwoArticle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                    fieldLabel="Featured Article Page Path"
+                                                    name="./pathTwoArticle"
+                                                    rootPath="/content"
+                                                    required="{Boolean}true"
+                                                    class="hide article-type-showhide-target"
+                                                    showhidetargetvalue="threeManualArticles"
+                                            />
+                                            <pathThreeArticle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                    fieldLabel="Featured Article Page Path"
+                                                    name="./pathThreeArticle"
+                                                    rootPath="/content"
+                                                    required="{Boolean}true"
+                                                    class="hide article-type-showhide-target"
+                                                    showhidetargetvalue="threeManualArticles"
+                                            />
+                                            <pathFourArticle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                    fieldLabel="Featured Article Page Path"
+                                                    name="./pathFourArticle"
+                                                    rootPath="/content"
+                                                    required="{Boolean}true"
+                                                    class="hide article-type-showhide-target"
+                                                    showhidetargetvalue="threeManualArticles"
+                                            />
+                                            <numberOfColumns jcr:primaryType="nt:unstructured"
+                                                             sling:resourceType="granite/ui/components/foundation/form/select"
+                                                             fieldLabel="Number of Columns"
+                                                             fieldDescription="When results are displayed as cards, choose if two or three cards will be displayed in a row."
+                                                             name="./numberOfColumns">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <twoCards
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="2"
+                                                            value="two"/>
+                                                    <threeCards
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="3"
+                                                            value="three"/>
+                                                </items>
+                                            </numberOfColumns>
+                                            <spacing
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/include"
+                                                    path="/apps/adp/components/authoring/common_dialog_fields/spacing"/>
+                                        </items>
+                                    </inpageconfigs>
+                                </items>
+                            </configs>
+                        </items>
+                    </tabs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
+

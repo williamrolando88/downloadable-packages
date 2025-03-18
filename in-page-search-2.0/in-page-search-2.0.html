@@ -1,0 +1,183 @@
+
+<div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="In Page Search 2.0"></div>
+<sly data-sly-use.pathlistProvider="com.wmt.adp.data_providers.general.models.CorporateInPageNewsListProvider"/>
+<sly data-sly-use.metadataProvider="${'com.wmt.adp.data_providers.page.MetadataProvider'}"/>
+<div class="in-page-news-main" open-in-new-tab="${properties.openInNewTab}">
+    <meta data-sly-test="${metadataProvider.socialImage}" property="og:image" content="${metadataProvider.socialImage}" name="socialImage" />
+    <sly data-sly-test.target="${pathlistProvider.enableFeaturedArticles}">
+        <div class="featureArticleTitle">${pathlistProvider.FeaturedArticlesSectionTitle}</div>
+        <div class="featured-article-scroll">
+            <div class="featured-article ${pathlistProvider.featuredArticlesFeedType}">
+                <div class="enable-one-featured-article">
+                    <a class="article-one-link" href="${pathlistProvider.featuredArticlesFeedType == 'oneManualArticle' ? pathlistProvider.PathOneArticle : pathlistProvider.PathTwoArticle}">
+                        <img alt="${pathlistProvider.ImageAltOne || pathlistProvider.ImageAltTwo}" src="${pathlistProvider.SocialImagePathOne || pathlistProvider.SocialImagePathTwo ? pathlistProvider.SocialImagePathOne || pathlistProvider.SocialImagePathTwo : pathlistProvider.ThumbnailImagePathOne || pathlistProvider.ThumbnailImagePathTwo || properties.imgPath || '/etc/clientlibs/adp/base/images/logo-spark.svg'}">
+                        <div class="in-page__content-wrapper-featured-article">
+                            <div class="presskit-div-featured-article" style="padding-top:0px;">
+                                <p class="in-page__topic-tag-featured-article">${pathlistProvider.PrimaryTagTitleOne || pathlistProvider.PrimaryTagTitleTwo}</p>
+                            </div>
+                            <p class="in-page__title-featured-article" style="-webkit-box-orient: vertical;">${pathlistProvider.MainTitleOne || pathlistProvider.MainTitleTwo}</p>
+                            <div data-sly-test="${properties.featuredArticlesFeedType == 'oneManualArticle'}" class="in-page__footer">
+                                <p class="in-page__date-featured-article">${pathlistProvider.formattedDateOne}</p>
+                                <div data-sly-test="${pathlistProvider.checkPressCenterLinkPageOne}" class="pressCenter-link" href ="${properties.pathOneArticle}.html">
+                                    <div class="pressCenter-Icon" ></div>
+                                    <span class="press-center-html"> Press Center </span>
+                                </div>
+                            </div>
+                            <div data-sly-test="${properties.featuredArticlesFeedType == 'oneSearch'}" class="in-page__footer">
+                                <p class="in-page__date-featured-article">${pathlistProvider.formattedDateOne}</p>
+                            </div>
+                            <div data-sly-test="${properties.featuredArticlesFeedType == 'threeManualArticles'}" class="in-page__footer">
+                                <p class="in-page__date-featured-article">${pathlistProvider.formattedDateTwo}</p>
+                                <div data-sly-test="${pathlistProvider.checkPressCenterLinkPageTwo}" class="pressCenter-link" href ="${properties.pathTwoArticle}.html">
+                                    <div class="pressCenter-Icon" ></div>
+                                    <span class="press-center-html"> Press Center </span>
+                                </div>
+                            </div>
+                            <div data-sly-test="${properties.featuredArticlesFeedType == 'threeSearch'}" class="in-page__footer">
+                                <p class="in-page__date-featured-article">${pathlistProvider.formattedDateTwo}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <sly data-sly-test.target="${pathlistProvider.featuredArticlesFeedType == 'threeSearch' || pathlistProvider.featuredArticlesFeedType == 'threeManualArticles'}">
+                    <div class="enable-three-featured-article" >
+                        <div class="one">
+                            <a class="article-three-link-one" href="${pathlistProvider.PathThreeArticle}">
+                                <img alt="${pathlistProvider.ImageAltThree}" src="${pathlistProvider.SocialImagePathThree ? pathlistProvider.SocialImagePathThree : pathlistProvider.ThumbnailImagePathThree || properties.imgPath || '/etc/clientlibs/adp/base/images/logo-spark.svg'}">
+                                <div class="in-page__content-wrapper-featured-article">
+                                    <div class="presskit-div-featured-article" style="padding-top:0px;">
+                                        <p class="in-page__topic-tag-featured-article">${pathlistProvider.PrimaryTagTitleThree}</p>
+                                    </div>
+                                    <p class="in-page__title-featured-article" style="-webkit-box-orient: vertical;">${pathlistProvider.MainTitleThree}</p>
+                                    <div data-sly-test="${properties.featuredArticlesFeedType == 'threeManualArticles'}" class="in-page__footer">
+                                        <p class="in-page__date-featured-article">${pathlistProvider.formattedDateThree}</p>
+                                        <div data-sly-test="${pathlistProvider.checkPressCenterLinkPageThree}" class="pressCenter-link" href ="${properties.pathThreeArticle}.html">
+                                            <div class="pressCenter-Icon" ></div>
+                                            <span class="press-center-html"> Press Center </span>
+                                        </div>
+                                    </div>
+                                    <div data-sly-test="${properties.featuredArticlesFeedType == 'threeSearch'}" class="in-page__footer">
+                                        <p class="in-page__date-featured-article">${pathlistProvider.formattedDateThree}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="three">
+                            <a class="article-three-link-three" href="${pathlistProvider.PathFourArticle}">
+                                <img alt="${pathlistProvider.ImageAltFour}" src="${pathlistProvider.SocialImagePathFour ? pathlistProvider.SocialImagePathFour : pathlistProvider.ThumbnailImagePathFour || properties.imgPath || '/etc/clientlibs/adp/base/images/logo-spark.svg'}">
+                                <div class="in-page__content-wrapper-featured-article">
+                                    <div class="presskit-div-featured-article" style="padding-top:0px;">
+                                        <p class="in-page__topic-tag-featured-article"> ${pathlistProvider.PrimaryTagTitleFour} </p>
+                                    </div>
+                                    <p class="in-page__title-featured-article" style="-webkit-box-orient: vertical;">${pathlistProvider.MainTitleFour}</p>
+                                    <div data-sly-test="${properties.featuredArticlesFeedType == 'threeManualArticles'}" class="in-page__footer">
+                                        <p class="in-page__date-featured-article">${pathlistProvider.formattedDateFour}</p>
+                                        <div data-sly-test="${pathlistProvider.checkPressCenterLinkPageFour}" class="pressCenter-link" href ="${properties.pathFourArticle}.html">
+                                            <div class="pressCenter-Icon" ></div>
+                                            <span class="press-center-html"> Press Center </span>
+                                        </div>
+                                    </div>
+                                    <div data-sly-test="${properties.featuredArticlesFeedType == 'threeSearch'}" class="in-page__footer">
+                                        <p class="in-page__date-featured-article">${pathlistProvider.formattedDateFour}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </sly>
+                <div class="scroll-button" id="scroll-button">
+                </div>
+            </div>
+        </div>
+    </sly>
+    <div class="scroll-button-Mobile" id="scroll-button-Mobile">
+    </div>
+    <div class="in-page-news-layout">
+        <div class="in-page-news-left">
+            <div class="in-page-news-left-sort-section sort-by-wrapper">
+                <div class="sort-text">${"Sort by" @i18n}</div>
+                <div class="data-toggle">
+                    <div class="data-tog date-on active">${"Newest" @i18n}</div>
+                    <div class="data-tog date-off">${"Relevancy" @i18n}</div>
+                </div>
+            </div>
+            <div class="seperator"></div>
+            <div class="in-page-news-left-filter-section"></div>
+            <div class="dropdown-header-item">
+                <label data-sly-test="${pathlistProvider.FilteringConfigurations}">${"Filter by" @i18n}</label>
+                <a href="#" class="clear-all">${"Clear All" @i18n}</a>
+            </div>
+            <div class="chip-container left-chip-container"></div>
+            <div class="in-page-news-filter-tags">
+                <sly data-sly-list.item="${pathlistProvider.FilteringConfigurations.keySet.iterator}">
+                    <div>
+                        <span>${item}</span>
+                        <div class="dropdown-list" id="filter-list">
+                            <ul>
+                                <sly data-sly-list.tag="${pathlistProvider.FilteringConfigurations[item]}">
+                                    <li>
+                                        <input type="checkbox" id="${tag.name}" name="${tag.name}" class="dropdown-item" value="${tag.tagID}"/>
+                                        <label for="${tag.name}">${tag.title}</label>
+                                    </li>
+                                </sly>
+                            </ul>
+                        </div>
+                    </div>
+                </sly>
+            </div>
+            <button class="showArticles hidden">
+                <span></span>
+            </button>
+        </div>
+        <div class="in-page-news-right">
+            <div class="start-of-inpage-component"> </div>
+            <div class="in-page-search-bar-container">
+                <div class="in-page-search-bar">
+                    <div data-sly-test="${!properties.disableSearch}" class="news-bar">
+                        <div class="news-form">
+                            <div class="magnify-icon" id="news-button">
+                                <i class="material-icons not-to-translate">search</i>
+                            </div>
+                            <input autocomplete="off" class="news-field" name="brightcove-restricted-news-text"
+                                   placeholder="${properties.newsText || 'Search'}" type="text" id="news-text" aria-label="Enter news term">
+                            <div class="material-icons clear-news-query hidden">close</div>
+                        </div>
+                    </div>
+                    <div class="filter-tablet-icon">
+                        <img class="filter-chip" alt="filter" src="/etc/clientlibs/adp/base/images/in-page-news-icons/mobile-filter/Filter.svg">
+                        <p class="filter-text">${"Filters" @i18n}</p>
+                        <div class="filter-tablet-icon-active">
+                            <span class="filter-tag-number">7</span>
+                        </div>
+                    </div>
+                    <div class="filter-mobile-icon">
+                        <img class="filter-chip" alt="filter" src="/etc/clientlibs/adp/base/images/in-page-news-icons/mobile-filter/Filter.svg">
+                        <p class="filter-text">${"Filters" @i18n}</p>
+                        <div class="filter-mobile-icon-active hidden">
+                            <span class="filter-tag-number-mobile">7</span>
+                        </div>
+                    </div>
+                    <div class="in-page-views" style="${properties.disableSearch ? 'margin-left:auto' : ''}">
+                    <div class="in-page-list-view"></div>
+                    <div class="in-page-card-view active"></div>
+                </div>
+                </div>
+            </div>
+            <div class="in-page__cards-wrapper" open-in-new-tab="${properties.openInNewTab}">
+                <div class="showArticlesNumber" data-sly-test="${properties.showResultCount}" ><span class="numberOfArticles"></span><span class="showArticlesText"></span></div>
+                <ul id="inpage-news-list-list-view" class="hidden">
+                </ul>
+                <ul id="inpage-news-list-card-view"  class="${pathlistProvider.numberOfColumns == 'two' ? 'twoCards' : 'threeCards'}">
+                </ul>
+            </div>
+            <div class="news-pagination-here" id="news-pagination-here"></div>
+            <div class="end-of-inpage-component"> </div>
+        </div>
+    </div>
+</div>
+<div id="overlay-in-page-search"></div>
+<script>
+    let imgPath = "${properties.imgPath @ context = 'text'}" ;
+    let showInternationalDate = "${properties.showInternationalDate @ context = 'text'}" ;
+    let pagepath = "${pathlistProvider.PagePathsList @ context = 'text'}";
+</script>
