@@ -157,18 +157,25 @@
                             <span class="filter-tag-number-mobile">7</span>
                         </div>
                     </div>
+
+                    <!--/* Trigger button to switch views */-->
                     <div class="in-page-views" style="${properties.disableSearch ? 'margin-left:auto' : ''}">
                     <div class="in-page-list-view"></div>
                     <div class="in-page-card-view active"></div>
                 </div>
                 </div>
             </div>
+
+            <!--/* Container for the list and grid view */-->
             <div class="in-page__cards-wrapper" open-in-new-tab="${properties.openInNewTab}">
-                <div class="showArticlesNumber" data-sly-test="${properties.showResultCount}" ><span class="numberOfArticles"></span><span class="showArticlesText"></span></div>
-                <ul id="inpage-news-list-list-view" class="hidden">
-                </ul>
-                <ul id="inpage-news-list-card-view"  class="${pathlistProvider.numberOfColumns == 'two' ? 'twoCards' : 'threeCards'}">
-                </ul>
+                <div class="showArticlesNumber" data-sly-test="${properties.showResultCount}" >
+                    <span class="numberOfArticles"></span>
+                    <span class="showArticlesText"></span>
+                </div>
+                <!--/* New wrapper to unify both views */-->
+                <ul id="inpage-news-list-view" class="hidden"></ul>
+                <ul id="inpage-news-list-list-view" class="hidden"></ul>
+                <ul id="inpage-news-list-card-view" class="${pathlistProvider.numberOfColumns == 'two' ? 'twoCards' : 'threeCards'}"></ul>
             </div>
             <div class="news-pagination-here" id="news-pagination-here"></div>
             <div class="end-of-inpage-component"> </div>
