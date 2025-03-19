@@ -168,13 +168,12 @@
 
             <!--/* Container for the list and grid view */-->
             <div class="in-page__cards-wrapper" open-in-new-tab="${properties.openInNewTab}">
-                <div class="showArticlesNumber" data-sly-test="${properties.showResultCount}" >
+                <div class="showArticlesNumber" data-sly-test="${properties.showResultCount}">
                     <span class="numberOfArticles"></span>
                     <span class="showArticlesText"></span>
                 </div>
-                <!--/* New wrapper to unify both views */-->
-                <ul id="inpage-news-list-list-view" class="hidden"></ul>
-                <ul id="inpage-news-list-card-view" class="${pathlistProvider.numberOfColumns == 'two' ? 'twoCards' : 'threeCards'}"></ul>
+                <!--/* Single unified container that will adapt based on view mode */-->
+                <ul id="inpage-news-list-view" class="grid-view ${pathlistProvider.numberOfColumns == 'two' ? 'twoCards' : 'threeCards'}"></ul>
             </div>
             <div class="news-pagination-here" id="news-pagination-here"></div>
             <div class="end-of-inpage-component"> </div>

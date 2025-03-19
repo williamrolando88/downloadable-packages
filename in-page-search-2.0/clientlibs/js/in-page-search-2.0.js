@@ -485,63 +485,37 @@
                                 $(".enable-three-featured-article .three p.in-page__date-featured-article").text(formattedArticleDate);
                                 $(".enable-three-featured-article .three div.in-page__footer").append(pressCenterHTML);
                             } else {
-                                tileHTML = '<li data-result-num="' + resultCount + '" class="in-page__card news-result-tag " path="' + result.path + '.html">' +
-                                    '<a  class="articleLink" href="' + result.path + '.html">' +
-                                    '<div class="in-page__image-wrapper">' +
-                                    '   <img alt="' + altText + '" src="' + path + '"></img>' +
-                                    '</div>\n' +
-                                    '<div class="in-page__content-wrapper">' +
-                                    '    <div class="presskit-div" style="padding-top:' + tagPresskitPadding + ';">' +
-                                    '    <p class="' + resultTagsClass + '">' + resultTags + '</p>\n' +
-                                    '    </div>\n' +
-                                    '    <p class="in-page__title" style="-webkit-box-orient: vertical;">' + title_value + '</p>\n' +
-                                    '    <div class="in-page__footer">' +
-                                    '      <p class="in-page__date check">' + formattedArticleDate + '</p>\n' +
-                                    pressCenterHTML +
-                                    '    </div>\n' +
-                                    '</div>\n' +
-                                    '</a>' +
-                                    '</li>';
-                                tileHTML2 = '<li data-result-num="' + resultCount + '" class="in-page__card news-result-tag " path="' + result.path + '.html">' +
-                                    '<a  class="articleLink" href="' + result.path + '.html">' +
-                                    '<img alt="' + altText + '" src="' + path + '"></img>' +
-                                    '<div class="in-page__content-wrapper">' +
-                                    '    <div class="presskit-div" style="padding-top:' + tagPresskitPadding + ';">' +
-                                    '    <p class="' + resultTagsClass + '">' + resultTags + '</p>\n' +
-                                    '    </div>\n' +
-                                    '    <p class="in-page__title" style="-webkit-box-orient: vertical;">' + title_value + '</p>\n' +
-                                    '</div>\n' +
-                                    '<div class="in-page__footer">' +
-                                    '    <p class="in-page__date-cards">' + formattedArticleDate + '</p>\n' +
-                                    pressCenterHTML +
-                                    '</div>\n' +
-                                    '</a>' +
-                                    '</li>';
-                                tileHTML3 = '<li data-result-num="' + resultCount + '" class="in-page__card news-result-tag " path="' + result.path + '.html">' +
-                                    '<a  class="articleLink" href="' + result.path + '.html">' +
-                                    '<div class="in-page__content-wrapper">' +
-                                    '    <div class="presskit-div" style="padding-top:' + tagPresskitPadding + ';">' +
-                                    '    <p class="' + resultTagsClass + '">' + resultTags + '</p>\n' +
-                                    '    </div>\n' +
-                                    '    <p class="in-page__title" style="-webkit-box-orient: vertical;">' + title_value + '</p>\n' +
-                                    '      <p class="in-page__date check">' + formattedArticleDate + '</p>\n' +
-                                    '</div>\n' +
-                                    '<div class="in-page__image-wrapper">' +
-                                    '   <img alt="' + altText + '" src="' + path + '"></img>' +
-                                    pressCenterHTML +
-                                    '</div>\n' +
-                                    '</a>' +
-                                    '</li>';
-                                // TODO: Update the logic here
-                                if (window.innerWidth <= 768) {
-                                    // TODO: Check for the responsive design to see what happens on a list view
-                                    $('#inpage-news-list-list-view').append(tileHTML3);
-                                } else {
-                                    $('#inpage-news-list-list-view').append(tileHTML);
+                                function createTileHTML(result, resultCount, altText, path, tagPresskitPadding, resultTagsClass, resultTags, title_value, formattedArticleDate, pressCenterHTML) {
+                                    return `<li data-result-num="${resultCount}" class="in-page__card news-result-tag" path="${result.path}.html">
+                                        <a class="articleLink" href="${result.path}.html">
+                                            <div class="in-page__image-wrapper">
+                                                <img alt="${altText}" src="${path}">
+                                            </div>
+                                            <div class="in-page__content-wrapper">
+                                                <div class="presskit-div" style="padding-top:${tagPresskitPadding};">
+                                                    <p class="${resultTagsClass}">${resultTags}</p>
+                                                </div>
+                                                <p class="in-page__title" style="-webkit-box-orient: vertical;">${title_value}</p>
+                                            </div>
+                                            <div class="in-page__footer">
+                                                <p class="in-page__date">${formattedArticleDate}</p>
+                                                ${pressCenterHTML}
+                                            </div>
+                                        </a>
+                                    </li>`;
                                 }
-                                // TODO: Update to prevent appending both content at the same time
-                                $('#inpage-news-list-card-view').append(tileHTML2);
-                                $('li').closest('.presskit-div').append(pressCenterHTML);
+                                $('#inpage-news-list-view').append(createTileHTML(
+                                    result,
+                                    resultCount,
+                                    altText,
+                                    path,
+                                    tagPresskitPadding,
+                                    resultTagsClass,
+                                    resultTags,
+                                    title_value,
+                                    formattedArticleDate,
+                                    pressCenterHTML
+                                ));
                             }
                         });
                         $(".numberOfArticles").text(resultData.numFound);
@@ -1070,22 +1044,19 @@
             }
         }
     });
-    // This code controls the click action and performs shows or hide the proper component
-    // TODO: Update this logic
     $(".in-page-list-view").on('click', function () {
         if (!$(this).hasClass("active")) {
             $(this).addClass("active");
             $(".in-page-card-view").removeClass("active");
-            $("#inpage-news-list-list-view").removeClass("hidden");
-            $("#inpage-news-list-card-view").addClass("hidden");
+            $("#inpage-news-list-view").removeClass("grid-view").addClass("list-view");
         }
     });
+
     $(".in-page-card-view").on('click', function () {
         if (!$(this).hasClass("active")) {
             $(this).addClass("active");
             $(".in-page-list-view").removeClass("active");
-            $("#inpage-news-list-card-view").removeClass("hidden");
-            $("#inpage-news-list-list-view").addClass("hidden");
+            $("#inpage-news-list-view").removeClass("list-view").addClass("grid-view");
         }
     });
 
