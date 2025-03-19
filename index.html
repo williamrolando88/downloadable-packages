@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Elements Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Elements Demo</h1>
+        
+        <div class="control-panel">
+            <h2>Add Elements</h2>
+            <button id="add-one">Add 1 Element</button>
+            <button id="add-three">Add 3 Elements</button>
+            <button id="add-nine">Add 9 Elements</button>
+            
+            <h2>Change Style</h2>
+            <div class="style-buttons">
+                <h3>Shape:</h3>
+                <button class="shape-btn" data-shape="circle">Circle</button>
+                <button class="shape-btn" data-shape="square">Square</button>
+                <button class="shape-btn" data-shape="triangle">Triangle</button>
+            </div>
+            
+            <div class="color-buttons">
+                <h3>Color:</h3>
+                <button class="color-btn" data-color="red">Red</button>
+                <button class="color-btn" data-color="blue">Blue</button>
+                <button class="color-btn" data-color="green">Green</button>
+            </div>
+        </div>
+        
+        <div id="elements-container">
+            <!-- Elements will be dynamically added here -->
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
